@@ -138,33 +138,49 @@ def calculate_displacement(enemy_coords, ally_coords):
     new_ally_coords = (int(new_ally_x), int(new_ally_y))
     return new_ally_coords, isCAC
 
-def move_and_attack(new_ally_coords, enemy_coords, isCAC):
+def move_and_attack(new_ally_coords, enemy_coords, character, isCAC):
 
     pyautogui.moveTo(new_ally_coords[0] + 20, new_ally_coords[1])
     pyautogui.click()
     time.sleep(2)
 
-    if isCAC:
+    if character == "Aksheny":
         pyautogui.moveTo(enemy_coords[0] + 20, enemy_coords[1])
-        pyautogui.press('6')
-        pyautogui.click()
-        time.sleep(0.5)
-        pyautogui.press('1')
+        pyautogui.press('3')
         pyautogui.click()
         time.sleep(0.5)
         pyautogui.press('3')
         pyautogui.click()
         time.sleep(0.5)
+        pyautogui.press('2')
+        pyautogui.click()
+        time.sleep(0.5)
+
+    elif character == "Turxton":
+        if isCAC:
+            pyautogui.moveTo(enemy_coords[0] + 20, enemy_coords[1])
+            pyautogui.press('6')
+            pyautogui.click()
+            time.sleep(0.5)
+            pyautogui.press('1')
+            pyautogui.click()
+            time.sleep(0.5)
+            pyautogui.press('3')
+            pyautogui.click()
+            time.sleep(0.5)
+        else:
+            pyautogui.press('3')
+            pyautogui.click()
+            time.sleep(0.5)
+            pyautogui.press('9')
+            pyautogui.click()
+            time.sleep(0.5)
+            pyautogui.press('0')
+            pyautogui.click()
+            time.sleep(0.5)
+
     else:
-        pyautogui.press('3')
-        pyautogui.click()
-        time.sleep(0.5)
-        pyautogui.press('9')
-        pyautogui.click()
-        time.sleep(0.5)
-        pyautogui.press('0')
-        pyautogui.click()
-        time.sleep(0.5)
+        print("Personaje no encontrado")
     
     pyautogui.moveTo(960, 1)
     pyautogui.press('f1')

@@ -25,7 +25,7 @@ if windows:
             window.activate()
             enemy_coords, ally_coords = find_positions()                                # Encontra la posición del enemigo y el aliado
             new_ally_coords, isCAC = calculate_displacement(enemy_coords, ally_coords)  # Calcula el desplazamiento para quedar CAC
-            move_and_attack(new_ally_coords, enemy_coords, isCAC)                       # Realiza el desplazamiento y ataque CAC
+            move_and_attack(new_ally_coords, enemy_coords, character, isCAC)            # Realiza el desplazamiento y ataque CAC
             status = validate_combat_status(status)                                     # Valida sí el combate finalizó
             
         while status == "Gathering":

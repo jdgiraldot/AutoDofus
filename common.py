@@ -33,7 +33,7 @@ def validate_combat_status(status):
             if pyautogui.pixelMatchesColor(1350, 960, (207, 240, 0)): # Botón de combate activo:
                 enemyTurn = False
             time.sleep(0.1)
-    time.sleep(3)
+    time.sleep(6)
     return status
 
 def validate_gathering_status(status):
