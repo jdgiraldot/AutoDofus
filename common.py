@@ -46,6 +46,7 @@ def validate_gathering_status(status):
         if pyautogui.pixelMatchesColor(260, 420, (191, 231, 0)): # Seleccionar reto
             pyautogui.press('f1')
         print("New status: ", status)
+        time.sleep(4)
     
     time.sleep(0.5)
     return status

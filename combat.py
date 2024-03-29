@@ -159,9 +159,15 @@ def move_and_attack(new_ally_coords, enemy_coords, isCAC):
         pyautogui.press('3')
         pyautogui.click()
         time.sleep(0.5)
+        pyautogui.press('9')
+        pyautogui.click()
+        time.sleep(0.5)
+        pyautogui.press('0')
+        pyautogui.click()
+        time.sleep(0.5)
     
     pyautogui.moveTo(960, 1)
     pyautogui.press('f1')
-    time.sleep(2)
+    time.sleep(4)
 
     return

@@ -5,9 +5,12 @@ from gathering import *
 import pyautogui
 import time
 
-windows = pyautogui.getWindowsWithTitle("Turxton") # Obtiene la lista de ventanas según el titulo
+
 status = None
 route = "Mijo"  # Rutas: Mijo, Salvia.
+character = "Aksheny" # Personaje: Turxton, Aksheny
+
+windows = pyautogui.getWindowsWithTitle(character) # Obtiene la lista de ventanas según el titulo
 
 if windows:
     window = windows[0] # Activa la primera ventana
