@@ -17,7 +17,6 @@ def identify_map(route):
 
     for i in range(len(maps)):
         if pyautogui.pixelMatchesColor(*maps[i]):
-            #print("Mapa: ", i)
             return i
     
     print("Mapa no encontrado")
@@ -36,7 +35,7 @@ def identify_resources(route, map):
             resources = [(547, 256, (169, 95, 139)),    # Salvia
                          (922, 141, (225, 232, 188)),   # Ortiga
                          (755, 151, (189, 193, 126)),   # Gobio 1
-                         (886, 303, (198, 200, 124)),   # Gobio 2
+                         (890, 305, (143, 163, 108)),   # Gobio 2
                          (925, 620, (212, 234, 49))]    # Fresno
         elif map == 2:
             resources = [(1463, 190, (172, 95, 142)),   # Salvia 1
@@ -68,7 +67,7 @@ def gather(resources):
     pyautogui.keyUp('shift')
 
     if gathering == False:
-        time.sleep(random.randint(2, 5))
+        time.sleep(random.randint(2, 3))
     
     return
 
@@ -82,9 +81,9 @@ def next_map(current_map):
 
     # Cambio de mapa optimizado esquinas
     right = (1590 + random.randint(-10, 10), 750 + random.randint(-100, 100))
-    down = (450 + random.randint(-100, 100), 905 + random.randint(-5, 5))
+    down = (450 + random.randint(-80, 80), 905 + random.randint(-5, 5))
     left = (320 + random.randint(-10, 10), 200 + random.randint(-100, 100))
-    up = (1450 + random.randint(-100, 100), 30 + random.randint(-5, 5))
+    up = (1450 + random.randint(-80, 80), 30 + random.randint(-5, 5))
     
     pyautogui.keyDown('shift')
 

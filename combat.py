@@ -145,33 +145,23 @@ def move_and_attack(new_ally_coords, enemy_coords, isCAC):
     time.sleep(2)
 
     if isCAC:
-        pyautogui.moveTo(enemy_coords[0] + 20, enemy_coords[1],)
+        pyautogui.moveTo(enemy_coords[0] + 20, enemy_coords[1])
         pyautogui.press('6')
         pyautogui.click()
-        time.sleep(0.2)
+        time.sleep(0.5)
         pyautogui.press('1')
         pyautogui.click()
-        time.sleep(0.3)
+        time.sleep(0.5)
         pyautogui.press('3')
         pyautogui.click()
-        time.sleep(3)
-
+        time.sleep(0.5)
     else:
         pyautogui.press('3')
         pyautogui.click()
-        time.sleep(0.2)
-        pyautogui.press('8')
-        pyautogui.click()
-        time.sleep(0.3)
-        pyautogui.press('9')
-        pyautogui.click()
-        time.sleep(0.4)
-        pyautogui.press('0')
-        pyautogui.click()
-        time.sleep(3)
+        time.sleep(0.5)
     
     pyautogui.moveTo(960, 1)
     pyautogui.press('f1')
-    time.sleep(10)
+    time.sleep(2)
 
     return

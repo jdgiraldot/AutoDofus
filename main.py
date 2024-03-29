@@ -5,7 +5,7 @@ from gathering import *
 import pyautogui
 import time
 
-windows = pyautogui.getWindowsWithTitle("Turxton - Dofus 2.71.0.1") # Obtiene la lista de ventanas según el titulo
+windows = pyautogui.getWindowsWithTitle("Turxton") # Obtiene la lista de ventanas según el titulo
 status = None
 route = "Salvia"  # Rutas: Mijo, Salvia.
 
