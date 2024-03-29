@@ -7,7 +7,7 @@ import time
 
 windows = pyautogui.getWindowsWithTitle("Turxton") # Obtiene la lista de ventanas según el titulo
 status = None
-route = "Salvia"  # Rutas: Mijo, Salvia.
+route = "Mijo"  # Rutas: Mijo, Salvia.
 
 if windows:
     window = windows[0] # Activa la primera ventana

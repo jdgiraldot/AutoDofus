@@ -4,12 +4,15 @@ import random
 
 def identify_map(route):
     if route == "Mijo":
-        maps = [(0, 0, (0, 0, 0)), (0, 0, (0, 0, 0)), (0, 0, (0, 0, 0)), (0, 0, (0, 0, 0))]
+        maps = [(1470, 120, (255, 245, 75)),    # 01
+                (554, 135, (87, 95, 90)),       # 02
+                (574, 432, (251, 251, 96)),     # 03
+                (633, 229, (251, 231, 97))]     # 04
     elif route == "Salvia":
-        maps = [(1260, 210, (94, 62, 12)),  # 01
-                (800, 205, (240, 203, 63)), # 02
-                (1020, 200, (36, 25, 19)),  # 03
-                (370, 440, (255, 208, 25))] # 04
+        maps = [(1260, 210, (94, 62, 12)),      # 01
+                (800, 205, (240, 203, 63)),     # 02
+                (1020, 200, (36, 25, 19)),      # 03
+                (370, 440, (255, 208, 25))]     # 04
     else:
         print("Ruta no reconocida")
         time.sleep(1)
@@ -25,7 +28,34 @@ def identify_map(route):
 
 def identify_resources(route, map):
 
-    if route == "Salvia":
+    if route == "Mijo":
+        if map == 0:
+            resources = [(981, 579, (252, 252, 252)),   # Mijo 1
+                         (981, 535, (252, 252, 251)),   # Mijo 2
+                         (1374, 339, (255, 255, 255)),  # Mijo 3
+                         (1505, 785, (35, 93, 23)),     # Bombú 1
+                         (503, 501, (37, 94, 25)),      # Bombú 2
+                         (1030, 380, (55, 36, 0)),      # Ebano
+                         (1370, 60, (134, 84, 66))]   # Cerezo
+        elif map == 1:
+            resources = [(806, 229, (252, 252, 250)),   # Mijo 1
+                         (1330, 622, (253, 253, 253)),  # Mijo 2
+                         (1452, 179, (72, 132, 5))]     # Bombú
+        elif map == 2:
+            resources = [(893, 491, (252, 252, 250)),   # Mijo 1
+                         (1243, 535, (253, 253, 253)),  # Mijo 2
+                         (1500, 90, (255, 206, 176)),   # Cerezo
+                         (1030, 413, (252, 203, 173))]  # Cerezo
+        elif map == 3:
+            resources = [(1025, 425, (246, 246, 227)),  # Mijo 1
+                         (544, 667, (253, 253, 253)),   # Mijo 2
+                         (457, 360, (243, 243, 240)),   # Mijo 3
+                         (1420, 225, (56, 37, 1)),      # Ebano
+                         (405, 640, (253, 204, 174))]   # Cerezo
+        else:
+            print("Mapa de recursos no encontrado")
+    
+    elif route == "Salvia":
         if map == 0:
             resources = [(1070, 820, (150, 47, 91)),    # Salvia 1
                          (807, 166, (87, 37, 61)),      # Salvia 2
@@ -67,7 +97,7 @@ def gather(resources):
     pyautogui.keyUp('shift')
 
     if gathering == False:
-        time.sleep(random.randint(2, 3))
+        time.sleep(random.randint(0, 1))  # Si no hay recursos, espera unos segundos
     
     return
 
@@ -108,7 +138,7 @@ def next_map(current_map):
     while next_map == False:
         if pyautogui.pixelMatchesColor(5, 30, (0, 0, 0)):
             next_map = True
-        time.sleep(0.1)
+        time.sleep(0.05)
     time.sleep(1)
 
     return
