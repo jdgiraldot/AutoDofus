@@ -18,9 +18,13 @@ def identify_map(route):
         time.sleep(1)
         return -1
 
-    for i in range(len(maps)):
-        if pyautogui.pixelMatchesColor(*maps[i]):
-            return i
+    count = 0
+    while count < 3:
+        for i in range(len(maps)):
+            if pyautogui.pixelMatchesColor(*maps[i]):
+                return i
+        time.sleep(3)
+        count += 1
     
     print("Mapa no encontrado")
     time.sleep(1)

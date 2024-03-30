@@ -19,7 +19,15 @@ def initial_status(status):
     return status
 
 def validate_combat_status(status):
-    if pyautogui.pixelMatchesColor(910, 720, (244, 226, 47)): # Letreto de Victoria
+    # if pyautogui.pixelMatchesColor(910, 720, (244, 226, 47)): # Letreto de Victoria
+    #     status = "Gathering"
+    #     pyautogui.press('esc')
+    #     print("New status: ", status)
+    # elif pyautogui.pixelMatchesColor(910,730, (201, 137, 107)): # Letreto de Derrota 
+    #     status = "Fin"  # Para un futuro desarrollo este estado será: "En Camino"
+    #     pyautogui.press('esc')
+    #     print("New status: ", status)
+    if pyautogui.pixelMatchesColor(1220, 1000, (39, 39, 30)): # Letreto de Victoria
         status = "Gathering"
         pyautogui.press('esc')
         print("New status: ", status)
