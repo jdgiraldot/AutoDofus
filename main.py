@@ -10,12 +10,12 @@ status = None
 route = "Mijo"  # Rutas: Mijo, Salvia.
 character = "Aksheny" # Personaje: Turxton, Aksheny
 
-windows = pyautogui.getWindowsWithTitle("Aksheny - Dofus 2.71.1.2") # Obtiene la lista de ventanas según el titulo
+windows = pyautogui.getWindowsWithTitle(character) # Obtiene la lista de ventanas según el titulo
 
 if windows:
     window = windows[0] # Activa la primera ventana
     window.activate()
-    time.sleep(1)
+    time.sleep(0.5)
 
     status = initial_status(status)
 

@@ -114,10 +114,10 @@ def next_map(current_map):
     # up = (960 + random.randint(-100, 100), 30 + random.randint(-5, 5))
 
     # Cambio de mapa optimizado esquinas
-    right = (1590 + random.randint(-10, 10), 750 + random.randint(-100, 100))
-    down = (450 + random.randint(-80, 80), 905 + random.randint(-5, 5))
-    left = (320 + random.randint(-10, 10), 200 + random.randint(-100, 100))
-    up = (1450 + random.randint(-80, 80), 30 + random.randint(-5, 5))
+    right = (1590 + random.randint(-5, 5), 750 + random.randint(-50, 80))
+    down = (450 + random.randint(-50, 80), 905 + random.randint(-5, 5))
+    left = (320 + random.randint(-5, 5), 200 + random.randint(-50, 80))
+    up = (1450 + random.randint(-50, 80), 30 + random.randint(-5, 5))
     
     pyautogui.keyDown('shift')
 
@@ -138,11 +138,13 @@ def next_map(current_map):
     
     pyautogui.keyUp('shift')
 
+    counter = 0
     next_map = False
-    while next_map == False:
+    while (next_map == False) and (counter < 1200):
         if pyautogui.pixelMatchesColor(5, 30, (0, 0, 0)):
             next_map = True
         time.sleep(0.05)
+        counter += 1
     time.sleep(1)
 
     return

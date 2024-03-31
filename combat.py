@@ -3,25 +3,18 @@ import time
 
 def find_positions():
 
-    # Obtener la captura de pantalla
     screenshot = pyautogui.screenshot()
-
-    # Convertir la captura de pantalla a una matriz de píxeles
     pixels = screenshot.load()
 
-    # Definir el píxel a buscar
-    enemy = (0, 0, 255)  # Enemigos
-    ally = (255, 0, 0)  # Aliados
+    enemy = (0, 0, 255)  # Enemigo
+    ally = (255, 0, 0)  # Aliado
 
-    # Definir las coordenadas de la sección a buscar
     start_x, start_y = (330, 25)
     end_x, end_y = (1590, 915)
 
-    # Banderas para indicar si se encontró el aliado o el enemigo
     ally_found = False
     enemy_found = False
 
-    # Buscar el píxel en la sección definida
     for x in range(start_x, end_x):
         for y in range(start_y, end_y):
             if pixels[x, y] == enemy and enemy_found==False:
@@ -31,15 +24,11 @@ def find_positions():
                 ally_coords = (x, y)
                 ally_found = True
 
-            # Si ya se encontraron ambos, salir del bucle interno
             if ally_found and enemy_found:
                 break
-
-        # Si ya se encontraron ambos, salir del bucle externo
         if ally_found and enemy_found:
             break
 
-    # Retornar las coordenadas encontradas
     return enemy_coords, ally_coords
 
 def validate_movement(move_ally_x, move_ally_y, movement):
@@ -152,9 +141,6 @@ def move_and_attack(new_ally_coords, enemy_coords, character, isCAC):
         pyautogui.press('3')
         pyautogui.click()
         time.sleep(0.5)
-        pyautogui.press('2')
-        pyautogui.click()
-        time.sleep(0.5)
 
     elif character == "Turxton":
         if isCAC:
@@ -184,6 +170,6 @@ def move_and_attack(new_ally_coords, enemy_coords, character, isCAC):
     
     pyautogui.moveTo(960, 1)
     pyautogui.press('f1')
-    time.sleep(4)
+    time.sleep(5)
 
     return
