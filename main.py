@@ -20,22 +20,32 @@ if windows:
     status = initial_status(status)
 
     while status != "Fin":
-
-        while status == "Combat":
-            enemy_coords, ally_coords = find_positions()                                # Encontra la posición del enemigo y el aliado
-            new_ally_coords, isCAC = calculate_displacement(enemy_coords, ally_coords)  # Calcula el desplazamiento para quedar CAC
-            move_and_attack(new_ally_coords, enemy_coords, character, isCAC)            # Realiza el desplazamiento y ataque CAC
-            status = validate_combat_status(status)                                     # Valida sí el combate finalizó
+        
+        try:
+            while status == "Combat":
+                enemy_coords, ally_coords = find_positions()                                # Encontra la posición del enemigo y el aliado
+                new_ally_coords, isCAC = calculate_displacement(enemy_coords, ally_coords)  # Calcula el desplazamiento para quedar CAC
+                move_and_attack(new_ally_coords, enemy_coords, character, isCAC)            # Realiza el desplazamiento y ataque CAC
+                status = validate_combat_status(status)                                     # Valida sí el combate finalizó
+        except:
+            print("Error en el combate")
+            status = initial_status(status)
+            continue
+        
+        try:
+            while status == "Gathering":
+                map = identify_map(route)
+                if map < 0:
+                    status = "Fin"
+                    break
+                resources = identify_resources(route,map)
+                gather(resources)
+                next_map(map)
+                status = validate_gathering_status(status)
+        except:
+            print("Error en la recolección")
+            status = initial_status(status)
+            continue
             
-        while status == "Gathering":
-            map = identify_map(route)
-            if map < 0:
-                status = "Fin"
-                break
-            resources = identify_resources(route,map)
-            gather(resources)
-            next_map(map)
-            status = validate_gathering_status(status)
-
 else:
     print("No se encontró ninguna ventana con el título especificado")

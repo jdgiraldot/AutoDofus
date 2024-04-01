@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pyautogui
 import time
 import random
@@ -26,7 +28,7 @@ def identify_map(route):
         time.sleep(3)
         count += 1
     
-    print("Mapa no encontrado")
+    print(datetime.now().strftime("[%H:%M:%S]"),"Mapa no encontrado")
     time.sleep(1)
     return -1
 
@@ -140,7 +142,7 @@ def next_map(current_map):
 
     counter = 0
     next_map = False
-    while (next_map == False) and (counter < 1200):
+    while (next_map == False) and (counter < 600):
         if pyautogui.pixelMatchesColor(5, 30, (0, 0, 0)):
             next_map = True
         time.sleep(0.05)

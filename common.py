@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pyautogui
 import time
 
@@ -12,11 +14,11 @@ def initial_status(status):
             pyautogui.click()
             time.sleep(0.5)
         pyautogui.press('f1')
-        print("Initial status: ", status)
+        print(datetime.now().strftime("[%H:%M:%S]"), status, " (initial status)")
         time.sleep(6)
     else:
         status = "Gathering"
-        print("Initial status: ", status)
+        print(datetime.now().strftime("[%H:%M:%S]"), status, " (initial status)")
         time.sleep(0.5)
     
     return status
@@ -25,7 +27,7 @@ def validate_combat_status(status):
     if pyautogui.pixelMatchesColor(1220, 1000, (39, 39, 30)): # Letreto de Victoria , (910, 720, (244, 226, 47)
         status = "Gathering"
         pyautogui.press('esc')
-        print("New status: ", status)
+        print(datetime.now().strftime("[%H:%M:%S]"), status)
     else:
         enemyTurn = True
         while enemyTurn:
@@ -46,7 +48,7 @@ def validate_gathering_status(status):
             pyautogui.click()
             time.sleep(0.5)
         pyautogui.press('f1')
-        print("New status: ", status)
+        print(datetime.now().strftime("[%H:%M:%S]"), status)
         time.sleep(6)
     
     time.sleep(0.5)
