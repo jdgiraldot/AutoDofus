@@ -73,7 +73,7 @@ def calculate_displacement(enemy_coords, ally_coords):
     # Calcular los movimientos necesarios
     while (moves_count < max_moves) and (((abs(distance_x) < 66) and (abs(distance_y) < 35)) == False):
         
-        if (distance_x >= 0) and (distance_y > 0): # Aliado en cuadrante superior izquierdo respecto al enemigo
+        if (distance_x >= 0) and (distance_y >= 0): # Aliado en cuadrante superior izquierdo respecto al enemigo
             if validate_movement(new_ally_x, new_ally_y, move_down):
                 new_ally_x += move_down[0]
                 new_ally_y += move_down[1]
@@ -84,7 +84,7 @@ def calculate_displacement(enemy_coords, ally_coords):
                 new_ally_y += move_right[1]
                 distance_x = enemy_x - new_ally_x
                 distance_y = enemy_y - new_ally_y
-        elif (distance_x < 0) and (distance_y >= 0): # Aliado en cuadrante superior derecho respecto al enemigo
+        elif (distance_x <= 0) and (distance_y > 0): # Aliado en cuadrante superior derecho respecto al enemigo
             if validate_movement(new_ally_x, new_ally_y, move_left):
                 new_ally_x += move_left[0]
                 new_ally_y += move_left[1]
@@ -95,7 +95,7 @@ def calculate_displacement(enemy_coords, ally_coords):
                 new_ally_y += move_down[1]
                 distance_x = enemy_x - new_ally_x
                 distance_y = enemy_y - new_ally_y
-        elif (distance_x >= 0) and (distance_y <= 0): # Aliado en cuadrante inferior izquierdo respecto al enemigo
+        elif (distance_x > 0) and (distance_y <= 0): # Aliado en cuadrante inferior izquierdo respecto al enemigo
             if validate_movement(new_ally_x, new_ally_y, move_right):
                 new_ally_x += move_right[0]
                 new_ally_y += move_right[1]
@@ -106,7 +106,7 @@ def calculate_displacement(enemy_coords, ally_coords):
                 new_ally_y += move_up[1]
                 distance_x = enemy_x - new_ally_x
                 distance_y = enemy_y - new_ally_y
-        elif (distance_x < 0) and (distance_y <= 0): # Aliado en cuadrante inferior derecho respecto al enemigo
+        elif (distance_x < 0) and (distance_y < 0): # Aliado en cuadrante inferior derecho respecto al enemigo
             if validate_movement(new_ally_x, new_ally_y, move_up):
                 new_ally_x += move_up[0]
                 new_ally_y += move_up[1]
@@ -141,6 +141,9 @@ def move_and_attack(new_ally_coords, enemy_coords, character, isCAC):
         pyautogui.press('3')
         pyautogui.click()
         time.sleep(0.5)
+        pyautogui.press('2')
+        pyautogui.click()
+        time.sleep(0.5)
 
     elif character == "Turxton":
         if isCAC:
@@ -168,7 +171,8 @@ def move_and_attack(new_ally_coords, enemy_coords, character, isCAC):
     else:
         print("Personaje no encontrado")
     
-    pyautogui.moveTo(960, 1)
+    pyautogui.moveTo(190, 80)
+    pyautogui.click()
     pyautogui.press('f1')
     time.sleep(5)
 
