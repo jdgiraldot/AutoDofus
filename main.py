@@ -11,6 +11,7 @@ route = "Mijo"  # Rutas: Mijo, Salvia.
 character = "Aksheny" # Personaje: Turxton, Aksheny
 
 windows = pyautogui.getWindowsWithTitle(character) # Obtiene la lista de ventanas según el titulo
+# windows += pyautogui.getWindowsWithTitle("WhatsApp")
 
 if windows:
     window = windows[0] # Activa la primera ventana
@@ -20,7 +21,7 @@ if windows:
     status = initial_status(status)
 
     while status != "Fin":
-        
+
         try:
             while status == "Combat":
                 enemy_coords, ally_coords = find_positions()                                # Encontra la posición del enemigo y el aliado
@@ -28,7 +29,7 @@ if windows:
                 move_and_attack(new_ally_coords, enemy_coords, character, isCAC)            # Realiza el desplazamiento y ataque CAC
                 status = validate_combat_status(status)                                     # Valida sí el combate finalizó
         except:
-            print("Error en el combate")
+            # whatsapp_notification(windows)
             status = initial_status(status)
             continue
         
@@ -43,7 +44,7 @@ if windows:
                 next_map(map)
                 status = validate_gathering_status(status)
         except:
-            print("Error en la recolección")
+            # whatsapp_notification(windows)
             status = initial_status(status)
             continue
             

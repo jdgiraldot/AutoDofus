@@ -53,3 +53,15 @@ def validate_gathering_status(status):
     
     time.sleep(0.5)
     return status
+
+def whatsapp_notification(windows):
+    window = windows[1]
+    window.activate()
+    time.sleep(0.5)
+    pyautogui.write("AutoDofus: Aviso de excepcion", interval=0.05)
+    pyautogui.press('enter')
+    time.sleep(0.5)
+    window = windows[0]
+    window.activate()
+    time.sleep(0.5)
+    return
