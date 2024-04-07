@@ -9,6 +9,7 @@ import time
 status = None
 route = "Mijo"  # Rutas: Mijo, Salvia.
 character = "Aksheny" # Personaje: Turxton, Aksheny
+map = 0
 
 windows = pyautogui.getWindowsWithTitle(character) # Obtiene la lista de ventanas según el titulo
 # windows += pyautogui.getWindowsWithTitle("WhatsApp")
@@ -35,10 +36,10 @@ if windows:
         
         try:
             while status == "Gathering":
-                map = identify_map(route)
-                if map < 0:
-                    status = "Fin"
-                    break
+                map = identify_map(route, map)
+                # if map < 0:
+                #     status = "Fin"
+                #     break
                 resources = identify_resources(route,map)
                 gather(resources)
                 next_map(map)

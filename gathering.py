@@ -4,7 +4,7 @@ import pyautogui
 import time
 import random
 
-def identify_map(route):
+def identify_map(route, current_map):
     if route == "Mijo":
         maps = [(1470, 120, (255, 245, 75)),    # 01
                 (554, 135, (87, 95, 90)),       # 02
@@ -21,7 +21,7 @@ def identify_map(route):
         return -1
 
     count = 0
-    while count < 3:
+    while count < 5:
         for i in range(len(maps)):
             if pyautogui.pixelMatchesColor(*maps[i]):
                 return i
@@ -30,7 +30,10 @@ def identify_map(route):
     
     print(datetime.now().strftime("[%H:%M:%S]"),"Mapa no encontrado")
     time.sleep(1)
-    return -1
+    if current_map >= 3:
+        return 0
+    else:
+        return current_map + 1
 
 def identify_resources(route, map):
 
