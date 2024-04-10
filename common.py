@@ -26,6 +26,7 @@ def initial_status(status):
 def validate_combat_status(status):
     if pyautogui.pixelMatchesColor(1220, 1000, (39, 39, 30)): # Letreto de Victoria , (910, 720, (244, 226, 47)
         status = "Gathering"
+        time.sleep(0.5)
         pyautogui.press('esc')
         print(datetime.now().strftime("[%H:%M:%S]"), status)
     else:
